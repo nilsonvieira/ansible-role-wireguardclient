@@ -1,7 +1,7 @@
 ---
 - name: Copy VPN File
   copy:
-    src: '{{ vpn }}'
+    src: '{{ item }}'
     dest: /etc/wireguard/
     mode: '600'
   with_fileglob:
