@@ -1,0 +1,15 @@
+galaxy_info:
+  role_name: ansible-role-wireguardclient
+  author: Nilson R S Vieira
+  description: Install Wireguard Client Packs
+  license: GPLv2
+
+  min_ansible_version: 2.10.8
+  
+  platforms: 
+  - name: "Ubuntu"
+    versions:
+      - impish
+
+  galaxy_tags:
+    - wireguard

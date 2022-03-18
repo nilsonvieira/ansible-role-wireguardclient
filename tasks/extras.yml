@@ -1,0 +1,13 @@
+---
+- name: Clone Repository Gwire
+  git:
+    repo: git@github.com:nilsonvieira/gwireguard.git
+    dest: /home/'{{ usuario }}'/Downloads
+    single_branch: yes
+    version: main
+- name: Perm file Configure
+  file:
+    path: /home/'{{ usuario }}'/Downloads/gwireguard/configure
+    mode: '0755'
+- name: Execute Configure GWire
+  shell: /home/'{{ usuario }}'/Downloads/gwireguard/configure >> /tmp/gwire.log

@@ -1,0 +1,9 @@
+---
+- name: Install Wireguard Client on Ubuntu (IMPISH).
+  include: installwg.yml
+
+- name: Configure Extras Files
+  include: extras.yml
+
+- name: Configure Files VPN
+  include: vpnfiles.yml
