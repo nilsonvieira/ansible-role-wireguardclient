@@ -1,12 +1,18 @@
 ---
-- name: Clone Repository Gwire
-  git:
-    repo: https://github.com/nilsonvieira/gwireguard.git
-    clone: yes
-    dest: /home/{{ usuario }}/Downloads/gwireguard
-- name: Perm file Configure
-  file:
-    path: /home/{{ usuario }}/Downloads/gwireguard/configure
+- name: Create directory GWire
+  ansible.builtin.file:
+    path: /opt/gwire/
+    state: directory
     mode: '0755'
-- name: Execute Configure GWire
-  shell: /home/{{ usuario }}/Downloads/gwireguard/configure >> /tmp/gwire.log
+
+- name: Download Bin GWire
+  get_url:
+    url: https://raw.githubusercontent.com/nilsonvieira/gwireguard/main/gwire
+    dest: /opt/gwire/gwire
+    mode: '0755'
+
+- name: Create a symbolic link for binary GWire
+  ansible.builtin.file:
+    src: /opt/gwire/gwire
+    dest: /usr/local/bin/gwire
+    state: link
